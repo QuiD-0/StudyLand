@@ -1,21 +1,13 @@
 class Solution {
     fun mergeAlternately(word1: String, word2: String): String {
-        var answer = ""
+        val sb = StringBuilder()
+        val maxLength=max(word1.length, word2.length)
 
-        var index = 0
-        val firstSize = word1.length - 1
-        val secoondSize: Int = word2.length - 1
-
-        while (index <= firstSize || index <= secoondSize) {
-            if (firstSize >= index) {
-                answer = answer+word1[index]
-            }
-            if (secoondSize >= index) {
-                answer = answer+word2[index]
-            }
-            index += 1
+        for(i in 0 until maxLength){
+            if(i<word1.length) sb.append(word1[i])
+            if(i<word2.length) sb.append(word2[i])
         }
 
-        return answer
+        return sb.toString()
     }
 }
