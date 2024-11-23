@@ -1,7 +1,6 @@
-
 class Solution {
     fun mergeAlternately(word1: String, word2: String): String {
-        val list: MutableList<Char> = mutableListOf()
+        var answer = ""
 
         var index = 0
         val firstSize = word1.length - 1
@@ -9,10 +8,10 @@ class Solution {
 
         while (true) {
             if (firstSize >= index) {
-                list.add(word1[index])
+                answer = answer+word1[index]
             }
             if (secoondSize >= index) {
-                list.add(word2[index])
+                answer = answer+word2[index]
             }
             index += 1
             if (index > firstSize && index > secoondSize) {
@@ -20,6 +19,6 @@ class Solution {
             }
         }
 
-        return list.joinToString("")
+        return answer
     }
 }
