@@ -1,9 +1,12 @@
 class Solution {
     fun kidsWithCandies(candies: IntArray, extraCandies: Int): List<Boolean> {
-        val max = candies.max()
-        val answer = mutableListOf<Boolean>()
+        var max = candies[0]
+        val answer = ArrayList<Boolean>()
         for(i in 0..candies.size-1) {
-            answer.add((candies[i]+extraCandies >= max))
+            max = Math.max(max, candies[i])
+        }
+        for (i in candies){
+            answer.add(i + extraCandies >= max)
         }
         return answer
     }
