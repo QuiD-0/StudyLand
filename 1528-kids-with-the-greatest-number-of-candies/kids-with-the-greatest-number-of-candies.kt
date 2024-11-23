@@ -3,11 +3,7 @@ class Solution {
         val max = candies.max()
         val answer = mutableListOf<Boolean>()
         candies.forEach {
-            if (it + extraCandies >= max) {
-                answer.add(true)
-            } else {
-                answer.add(false)
-            }
+            answer.add(it + extraCandies >= max)
         }
         return answer
     }
