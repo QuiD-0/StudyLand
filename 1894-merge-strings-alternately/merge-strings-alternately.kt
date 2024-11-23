@@ -6,7 +6,7 @@ class Solution {
         val firstSize = word1.length - 1
         val secoondSize: Int = word2.length - 1
 
-        while (true) {
+        while (index <= firstSize || index <= secoondSize) {
             if (firstSize >= index) {
                 answer = answer+word1[index]
             }
@@ -14,9 +14,6 @@ class Solution {
                 answer = answer+word2[index]
             }
             index += 1
-            if (index > firstSize && index > secoondSize) {
-                break
-            }
         }
 
         return answer
