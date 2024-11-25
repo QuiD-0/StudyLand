@@ -1,11 +1,10 @@
 class Solution {
-        fun reverseVowels(s: String): String {
-        val arr = arrayOf('a', 'e', 'o', 'u', 'i', 'A', 'E', 'O', 'U', 'I')
+    fun reverseVowels(s: String): String {
         val words = s.toCharArray()
         val indexArr = mutableListOf<Int>()
         val vowelArr = mutableListOf<Char>()
         words.forEachIndexed { index, e ->
-            if (arr.contains(e)) {
+            if (isVowels(e)) {
                 indexArr.add(index)
                 vowelArr.add(e)
             }
@@ -14,5 +13,13 @@ class Solution {
             words[i] = vowelArr[index]
         }
         return words.joinToString("")
+    }
+
+    private fun isVowels(char: Char): Boolean {
+        return char == 'a' || char == 'A' ||
+                char == 'e' || char == 'E' ||
+                char == 'i' || char == 'I' ||
+                char == 'o' || char == 'O' ||
+                char == 'u' || char == 'U'
     }
 }
