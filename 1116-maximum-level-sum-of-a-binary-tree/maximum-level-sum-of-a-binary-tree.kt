@@ -17,6 +17,14 @@ class Solution {
             }
             list.add(sum)
         }
-        return list.withIndex().maxBy { it.value }.index.inc()
+              var ans = 0
+        var max = Int.MIN_VALUE
+        list.forEachIndexed { index, i ->
+            if (max < i) {
+                max = i
+                ans = index
+            }
+        }
+        return ans+1
     }
 }
