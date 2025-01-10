@@ -1,22 +1,25 @@
 class Solution {
-  fun successfulPairs(spells: IntArray, potions: IntArray, success: Long): IntArray {
-    potions.sort()
-    val res = IntArray(spells.size)
-    for ((i, v) in spells.withIndex())
-      res[i] = potions.size - binarySearch(success, v, potions)
-    return res
-  }
+    fun successfulPairs(spells: IntArray, potions: IntArray, success: Long): IntArray {
+        potions.sort()
 
-  fun binarySearch(success: Long, spell: Int, potions: IntArray): Int {
-    var l = 0
-    var r = potions.size - 1
-    while (l <= r) {
-      val m = (l + r) / 2
-      if (potions[m].toLong() * spell >= success)
-        r = m - 1
-      else
-        l = m + 1
+        val answer = IntArray(spells.size)
+        spells.forEachIndexed { index, it ->
+            answer[index] = potions.size - search(it, success, potions)
+        }
+        return answer
     }
-    return l
-  }
+
+    private fun search(multiply: Int, target: Long, array: IntArray): Int {
+        var min = 0
+        var max = array.size - 1
+        while (min <= max) {
+            val mid = (min + max) / 2
+            if (array[mid].toLong() * multiply >= target) {
+                max = mid - 1
+            } else {
+                min = mid + 1
+            }
+        }
+        return min
+    }
 }
